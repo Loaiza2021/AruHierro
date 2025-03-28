@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hierros & Construcción Aruhierro</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      :root {
+        --primary: #1a237e;
+        --secondary: #ff5722;
+        --gray: #263238;
+        --light: #f5f5f5;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Header y Navegación */
+      header {
+        background: var(--primary);
+        padding: 1rem;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-decoration: none;
+      }
+
+      .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-menu a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .nav-menu a:hover {
+        color: var(--secondary);
+      }
+
+      .menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      /* Hero Section */
+      .hero {
+        height: 100vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7)),
+          url("/img/Imagen\ de\ WhatsApp\ 2025-03-16\ a\ las\ 15.47.54_10223bbc.jpg") center;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: white;
+        padding: 0 1rem;
+        margin-top: 60px;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+      }
+
+      .cta-btn {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background: var(--secondary);
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background 0.3s;
+      }
+
+      .cta-btn:hover {
+        background: #f4511e;
+      }
+
+      /* Servicios */
+      .servicios {
+        padding: 5rem 1rem;
+        background: var(--light);
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .section-title h2 {
+        font-size: 2.5rem;
+        color: var(--gray);
+        margin-bottom: 1rem;
+      }
+
+      .servicios-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .servicio-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        transition: transform 0.3s;
+      }
+
+      .servicio-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .servicio-card i {
+        font-size: 3rem;
+        color: var(--primary);
+        margin-bottom: 1rem;
+      }
+
+      /* Sobre Nosotros */
+      .sobre-nosotros {
+        padding: 5rem 1rem;
+      }
+
+      .sobre-nosotros-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .sobre-nosotros-img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+
+      /* Contacto */
+      .contacto {
+        padding: 5rem 1rem;
+        background: var(--light);
+      }
+
+      .contacto-container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .contacto-form {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--gray);
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+
+      .submit-btn {
+        background: var(--primary);
+        color: white;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .submit-btn:hover {
+        background: #0d47a1;
+      }
+
+      /* Footer */
+      footer {
+        background: var(--gray);
+        color: white;
+        padding: 3rem 1rem;
+        text-align: center;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+      }
+
+      .footer-section h3 {
+        margin-bottom: 1rem;
+      }
+
+      .footer-section p {
+        margin-bottom: 0.5rem;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .menu-btn {
+          display: block;
+        }
+
+        .nav-menu {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: var(--primary);
+          flex-direction: column;
+          padding: 1rem;
+          text-align: center;
+        }
+
+        .nav-menu.active {
+          display: flex;
+        }
+
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .sobre-nosotros-content {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="nav-container">
+        <a href="#" class="logo">AruHierro</a>
+        <button class="menu-btn">☰</button>
+        <nav>
+          <ul class="nav-menu">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section id="inicio" class="hero">
+      <div class="hero-content">
+        <h1>AruHierro</h1>
+        <p>
+          CONSTRUCTION & MATERIALS VBA
+          <br />
+          Somos una empresa de construcción dedica a la elavoracion de hierros y
+          materiales para la construcción
+        </p>
+        <a href="#contacto" class="cta-btn">Contáctanos</a>
+      </div>
+    </section>
+
+    <section id="servicios" class="servicios">
+      <div class="section-title">
+        <h2>Nuestros Servicios</h2>
+        <p>Ofrecemos soluciones integrales para tus necesidades</p>
+      </div>
+      <div class="servicios-grid">
+        <div class="servicio-card">
+          <i>🏗️</i>
+          <h3>Construcción</h3>
+          <p>
+            Proyectos residenciales y comerciales con los más altos estándares
+            de calidad.
+          </p>
+        </div>
+        <div class="servicio-card">
+          <i>⚒️</i>
+          <h3>Elaboración de Hierros</h3>
+          <p>Fabricación y montaje de estructuras metálicas a medida.</p>
+        </div>
+        <div class="servicio-card">
+          <i>📐</i>
+          <h3>Diseño Estructural</h3>
+          <p>
+            Asesoría y diseño de estructuras metálicas para todo tipo de
+            proyectos.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre-nosotros" class="sobre-nosotros">
+      <div class="section-title">
+        <h2>Sobre Nosotros</h2>
+      </div>
+      <div class="sobre-nosotros-content">
+        <video src="/img/videoaru.mp4" autoplay playbackRate="+10"></video>
+        <div>
+          <h3>Nuestra Historia</h3>
+          <p>
+            Con más de 10 años de experiencia en el sector de la construcción y
+            elaboración de hierros, nos hemos consolidado como una empresa líder
+            en el mercado.
+          </p>
+          <p>
+            Nuestro compromiso con la calidad y la innovación nos permite
+            ofrecer las mejores soluciones para nuestros clientes.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="contacto">
+      <div class="section-title">
+        <h2>Contacto</h2>
+        <p>¿Tienes un proyecto en mente? Contáctanos</p>
+      </div>
+      <div class="contacto-container">
+        <form class="contacto-form" id="contactForm">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Enviar Mensaje</button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>ARUHIERO CONSTRUCTION & MATERIALS VBA</h3>
+          <p>Expertos en construcción y elaboración de hierros</p>
+        </div>
+        <div class="footer-section">
+          <h3>Contacto</h3>
+          <p>📞 (+297) 731-3075</p>
+          <p>📧 aruhierro.1@gmail.com.com</p>
+          <p>📍 Pos chiquito 81 F</p>
+        </div>
+        <div class="footer-section">
+          <h3>Horario</h3>
+          <p>Lunes - Viernes: 8:00 AM - 6:00 PM</p>
+          <p>Sábado -  Domingo:  8:00 AM - 4:00 PM</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Navegación móvil
+      const menuBtn = document.querySelector(".menu-btn");
+      const navMenu = document.querySelector(".nav-menu");
+
+      menuBtn.addEventListener("click", () => {
+        navMenu.classList.toggle("active");
+      });
+
+      // Cerrar menú al hacer click en un enlace
+      document.querySelectorAll(".nav-menu a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navMenu.classList.remove("active");
+        });
+      });
+
+      // Formulario de contacto
+      const contactForm = document.getElementById("contactForm");
+
+      contactForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        // Aquí puedes agregar la lógica para enviar el formulario
+        alert("Mensaje enviado correctamente");
+        contactForm.reset();
+      });
+
+      // Animación de scroll para los elementos
+      function revelarElementos() {
+        const elementos = document.querySelectorAll(
+          ".servicio-card, .sobre-nosotros-content, .contacto-form"
+        );
+
+        elementos.forEach((elemento) => {
+          const elementoTop = elemento.getBoundingClientRect().top;
+          const windowHeight = window.innerHeight;
+
+          if (elementoTop < windowHeight - 100) {
+            elemento.style.opacity = "1";
+            elemento.style.transform = "translateY(0)";
+          }
+        });
+      }
+
+      // Inicialmente los elementos están ocultos
+      document
+        .querySelectorAll(
+          ".servicio-card, .sobre-nosotros-content, .contacto-form"
+        )
+        .forEach((elemento) => {
+          elemento.style.opacity = "0";
+          elemento.style.transform = "translateY(50px)";
+          elemento.style.transition = "all 0.6s ease-out";
+        });
+
+      // Evento de scroll para revelar elementos
+      window.addEventListener("scroll", revelarElementos);
+      // Llamar una vez al cargar la página
+      revelarElementos();
+    </script>
+  </body>
+</html>
