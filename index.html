@@ -4,306 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hierros & Construcción Aruhierro</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      }
-
-      :root {
-        --primary: #1a237e;
-        --secondary: #ff5722;
-        --gray: #263238;
-        --light: #f5f5f5;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      /* Header y Navegación */
-      header {
-        background: var(--primary);
-        padding: 1rem;
-        position: fixed;
-        width: 100%;
-        top: 0;
-        z-index: 1000;
-      }
-
-      .nav-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .logo {
-        color: white;
-        font-size: 1.5rem;
-        font-weight: bold;
-        text-decoration: none;
-      }
-
-      .nav-menu {
-        display: flex;
-        list-style: none;
-        gap: 2rem;
-      }
-
-      .nav-menu a {
-        color: white;
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.3s;
-      }
-
-      .nav-menu a:hover {
-        color: var(--secondary);
-      }
-
-      .menu-btn {
-        display: none;
-        background: none;
-        border: none;
-        color: white;
-        font-size: 1.5rem;
-        cursor: pointer;
-      }
-
-      /* Hero Section */
-      .hero {
-        height: 100vh;
-        background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7)),
-          url("/img/Imagen\ de\ WhatsApp\ 2025-03-16\ a\ las\ 15.47.54_10223bbc.jpg") center;
-        display: flex;
-        align-items: center;
-        text-align: center;
-        color: white;
-        padding: 0 1rem;
-        margin-top: 60px;
-      }
-
-      .hero-content {
-        max-width: 800px;
-        margin: 0 auto;
-      }
-
-      .hero h1 {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-      }
-
-      .hero p {
-        font-size: 1.2rem;
-        margin-bottom: 2rem;
-      }
-
-      .cta-btn {
-        display: inline-block;
-        padding: 1rem 2rem;
-        background: var(--secondary);
-        color: white;
-        text-decoration: none;
-        border-radius: 5px;
-        transition: background 0.3s;
-      }
-
-      .cta-btn:hover {
-        background: #f4511e;
-      }
-
-      /* Servicios */
-      .servicios {
-        padding: 5rem 1rem;
-        background: var(--light);
-      }
-
-      .section-title {
-        text-align: center;
-        margin-bottom: 3rem;
-      }
-
-      .section-title h2 {
-        font-size: 2.5rem;
-        color: var(--gray);
-        margin-bottom: 1rem;
-      }
-
-      .servicios-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .servicio-card {
-        background: white;
-        padding: 2rem;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        transition: transform 0.3s;
-      }
-
-      .servicio-card:hover {
-        transform: translateY(-10px);
-      }
-
-      .servicio-card i {
-        font-size: 3rem;
-        color: var(--primary);
-        margin-bottom: 1rem;
-      }
-
-      /* Sobre Nosotros */
-      .sobre-nosotros {
-        padding: 5rem 1rem;
-      }
-
-      .sobre-nosotros-content {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
-        align-items: center;
-      }
-
-      .sobre-nosotros-img {
-        width: 100%;
-        height: 400px;
-        object-fit: cover;
-        border-radius: 10px;
-      }
-
-      /* Contacto */
-      .contacto {
-        padding: 5rem 1rem;
-        background: var(--light);
-      }
-
-      .contacto-container {
-        max-width: 800px;
-        margin: 0 auto;
-      }
-
-      .contacto-form {
-        background: white;
-        padding: 2rem;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
-
-      .form-group {
-        margin-bottom: 1.5rem;
-      }
-
-      .form-group label {
-        display: block;
-        margin-bottom: 0.5rem;
-        color: var(--gray);
-      }
-
-      .form-group input,
-      .form-group textarea {
-        width: 100%;
-        padding: 0.8rem;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        font-size: 1rem;
-      }
-
-      .submit-btn {
-        background: var(--primary);
-        color: white;
-        padding: 1rem 2rem;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background 0.3s;
-      }
-
-      .submit-btn:hover {
-        background: #0d47a1;
-      }
-
-      /* Footer */
-      footer {
-        background: var(--gray);
-        color: white;
-        padding: 3rem 1rem;
-        text-align: center;
-      }
-
-      .footer-content {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-      }
-
-      .footer-section h3 {
-        margin-bottom: 1rem;
-      }
-
-      .footer-section p {
-        margin-bottom: 0.5rem;
-      }
-
-      /* Responsive */
-      @media (max-width: 768px) {
-        .menu-btn {
-          display: block;
-        }
-
-        .nav-menu {
-          display: none;
-          position: absolute;
-          top: 100%;
-          left: 0;
-          right: 0;
-          background: var(--primary);
-          flex-direction: column;
-          padding: 1rem;
-          text-align: center;
-        }
-
-        .nav-menu.active {
-          display: flex;
-        }
-
-        .hero h1 {
-          font-size: 2rem;
-        }
-
-        .sobre-nosotros-content {
-          grid-template-columns: 1fr;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="/style.css">
+    <!-- Consider adding Favicon links here -->
+     <link rel="icon" href="/favicon.ico" sizes="any"> 
+     <link rel="icon" href="/favicon.svg" type="image/svg+xml"> 
   </head>
   <body>
+
+    <!-- ========================= Header Section Start ========================= -->
     <header>
       <div class="nav-container">
+        <!-- Logo -->
         <a href="#" class="logo">AruHierro</a>
-        <button class="menu-btn">☰</button>
+        <!-- Mobile Menu Button -->
+        <button class="menu-btn" aria-label="Abrir menú de navegación">☰</button>
+        <!-- Navigation Menu -->
         <nav>
           <ul class="nav-menu">
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#galeria">Galería</a></li>
             <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
             <li><a href="#contacto">Contacto</a></li>
           </ul>
         </nav>
       </div>
     </header>
+    <!-- ========================= Header Section End ========================= -->
 
+    <!-- ========================= Hero Section Start ========================= -->
     <section id="inicio" class="hero">
       <div class="hero-content">
         <h1>AruHierro</h1>
@@ -313,16 +42,19 @@
           Somos una empresa de construcción dedica a la elavoracion de hierros y
           materiales para la construcción
         </p>
-        <a href="#contacto" class="cta-btn">Contáctanos</a>
+        <a href="#contacto" class="cta-btn">Visítanos</a> <!-- Cambiado texto del botón -->
       </div>
     </section>
+    <!-- ========================= Hero Section End ========================= -->
 
+    <!-- ========================= Services Section Start ========================= -->
     <section id="servicios" class="servicios">
       <div class="section-title">
         <h2>Nuestros Servicios</h2>
         <p>Ofrecemos soluciones integrales para tus necesidades</p>
       </div>
       <div class="servicios-grid">
+        <!-- Service Card 1: Construction -->
         <div class="servicio-card">
           <i>🏗️</i>
           <h3>Construcción</h3>
@@ -331,11 +63,13 @@
             de calidad.
           </p>
         </div>
+        <!-- Service Card 2: Iron Works -->
         <div class="servicio-card">
           <i>⚒️</i>
           <h3>Elaboración de Hierros</h3>
           <p>Fabricación y montaje de estructuras metálicas a medida.</p>
         </div>
+        <!-- Service Card 3: Structural Design -->
         <div class="servicio-card">
           <i>📐</i>
           <h3>Diseño Estructural</h3>
@@ -346,131 +80,353 @@
         </div>
       </div>
     </section>
+    <!-- ========================= Services Section End ========================= -->
 
+    <!-- ========================= Gallery Section Start ========================= -->
+    <section id="galeria" class="galeria-seccion">
+      <div class="section-title">
+        <h2>Galería de Proyectos</h2>
+      </div>
+      <div class="carousel-container">
+        <div class="carousel">
+          <!-- Carousel Item 1: Image -->
+          <div class="carousel-item">
+            <img src="/img/Imagen de WhatsApp 2025-03-16 a las 15.47.54_10223bbc.jpg" alt="Proyecto Aruhierro 1">
+            <div class="image-description">Estructura metálica en proceso de montaje.</div>
+          </div>
+          <!-- Carousel Item 2: Video -->
+          <div class="carousel-item">
+            <video src="/img/AruHierroVideo-1.mp4" controls poster="/img/video-placeholder-1.jpg" muted>
+               Tu navegador no soporta la etiqueta de video.
+            </video>
+            <div class="image-description">Video mostrando proceso de trabajo en taller.</div>
+          </div>
+          <!-- Carousel Item 3: Image -->
+          <div class="carousel-item">
+            <img src="/img/Aruhierro-1.jpg" alt="Proyecto Aruhierro 2">
+            <div class="image-description">Vista general de estructura metálica para techo.</div>
+          </div>
+          <!-- Carousel Item 4: Video -->
+          <div class="carousel-item">
+             <video src="/img/videoaru.mp4" controls poster="/img/video-placeholder-2.jpg" muted>
+               Tu navegador no soporta la etiqueta de video.
+            </video>
+            <div class="image-description">Video de estructura metálica terminada e instalada.</div>
+          </div>
+          <!-- Carousel Item 5: Image -->
+          <div class="carousel-item">
+            <img src="/img/WhatsApp Image 2025-04-10 at 09.18.37_05c3e660.jpg" alt="Detalle de construcción 1">
+            <div class="image-description">Detalle de soldadura en viga metálica.</div>
+          </div>
+          <!-- Carousel Item 6: Image -->
+          <div class="carousel-item">
+            <img src="/img/WhatsApp Image 2025-04-10 at 09.18.37_0789f4d5.jpg" alt="Detalle de construcción 2">
+            <div class="image-description">Instalación de columnas de acero.</div>
+          </div>
+          <!-- Carousel Item 7: Image -->
+          <div class="carousel-item">
+            <img src="/img/WhatsApp Image 2025-04-10 at 09.18.38_1da9e8f1.jpg" alt="Detalle de construcción 3">
+            <div class="image-description">Unión de vigas metálicas en obra.</div>
+          </div>
+          <!-- Carousel Item 8: Image -->
+          <div class="carousel-item">
+            <img src="/img/WhatsApp Image 2025-04-10 at 09.18.39_7280a855.jpg" alt="Detalle de construcción 4">
+            <div class="image-description">Vista superior de estructura de techo metálico.</div>
+          </div>
+        </div> <!-- End .carousel -->
+      </div> <!-- End .carousel-container -->
+      <!-- Carousel Navigation Buttons -->
+      <div class="carousel-controls">
+        <button class="prev-btn" aria-label="Elemento anterior">❮</button>
+        <button class="next-btn" aria-label="Elemento siguiente">❯</button>
+      </div>
+    </section>
+    <!-- ========================= Gallery Section End ========================= -->
+
+    <!-- ========================= About Us Section Start ========================= -->
     <section id="sobre-nosotros" class="sobre-nosotros">
       <div class="section-title">
         <h2>Sobre Nosotros</h2>
       </div>
-      <div class="sobre-nosotros-content">
-        <video src="/img/videoaru.mp4" autoplay playbackRate="+10"></video>
-        <div>
+      <div class="historia">
+        <!-- History Image -->
+        <div class="historia-imagen">
+          <img src="/img/Aruhierro-1.jpg" alt="Imagen representativa de Aruhierro">
+        </div>
+        <!-- History Text -->
+        <div class="historia-texto">
           <h3>Nuestra Historia</h3>
           <p>
-            Con más de 10 años de experiencia en el sector de la construcción y
-            elaboración de hierros, nos hemos consolidado como una empresa líder
-            en el mercado.
+            Desde nuestros inicios hace más de cinco años, Aruhierro se ha dedicado a
+            transformar el panorama de la construcción y la fabricación de hierro en
+            la región. Lo que comenzó como una pequeña empresa con una gran visión, se
+            ha convertido en un referente de calidad y profesionalismo.
           </p>
           <p>
-            Nuestro compromiso con la calidad y la innovación nos permite
-            ofrecer las mejores soluciones para nuestros clientes.
+            A lo largo de este tiempo, hemos crecido junto a nuestros clientes, adaptándonos a sus
+            necesidades y superando sus expectativas en cada proyecto. Nuestra
+            trayectoria está marcada por la pasión por el detalle, la innovación
+            constante y el compromiso inquebrantable con la excelencia.
           </p>
         </div>
       </div>
     </section>
+    <!-- ========================= About Us Section End ========================= -->
 
+    <!-- ========================= Contact Section Start ========================= -->
     <section id="contacto" class="contacto">
       <div class="section-title">
-        <h2>Contacto</h2>
-        <p>¿Tienes un proyecto en mente? Contáctanos</p>
+        <h2>Contacto y Ubicación</h2>
+        <p>Visítanos o ponte en contacto con nosotros</p>
       </div>
-      <div class="contacto-container">
-        <form class="contacto-form" id="contactForm">
-          <div class="form-group">
-            <label for="nombre">Nombre</label>
-            <input type="text" id="nombre" name="nombre" required />
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required />
-          </div>
-          <div class="form-group">
-            <label for="mensaje">Mensaje</label>
-            <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
-          </div>
-          <button type="submit" class="submit-btn">Enviar Mensaje</button>
-        </form>
-      </div>
-    </section>
 
+      <div class="contacto-content">
+        <!-- Contenedor del Mapa -->
+        <div class="mapa-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2580.6344006039644!2d-69.9705307837681!3d12.467897653737232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e853fc89efb58e1%3A0xe9b6a59cf0242660!2sAruHierro%20Construction%20%26%20Materials%20VBA!5e0!3m2!1ses!2sve!4v1744298253948!5m2!1ses!2sve" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <!-- Contenedor de Horarios e Info -->
+        <div class="info-container">
+          <h3>Información de Contacto</h3>
+          <div class="info-item">
+            <h4><i class="icon">📍</i> Dirección</h4>
+            <p>Pos Chiquito 81 F, Savaneta, Aruba</p>
+          </div>
+          <div class="info-item">
+            <h4><i class="icon">📞</i> Teléfono</h4>
+            <p><a href="tel:+2977313075">(+297) 731-3075</a></p>
+          </div>
+          <div class="info-item">
+            <h4><i class="icon">📧</i> Email</h4>
+            <p><a href="mailto:aruhierro.1@gmail.com">aruhierro.1@gmail.com</a></p>
+          </div>
+          <div class="info-item">
+             <h4><i class="icon">🕒</i> Horario</h4>
+             <p>Lunes - Viernes: 8:00 AM - 6:00 PM</p>
+             <p>Sábado - Domingo: 8:00 AM - 4:00 PM</p>
+          </div>
+        </div>
+      </div> <!-- Fin de contacto-content -->
+    </section>
+    <!-- ========================= Contact Section End ========================= -->
+
+    <!-- ========================= Footer Section Start ========================= -->
     <footer>
       <div class="footer-content">
-        <div class="footer-section">
-          <h3>ARUHIERO CONSTRUCTION & MATERIALS VBA</h3>
-          <p>Expertos en construcción y elaboración de hierros</p>
+        <!-- Footer Section 1: Brand -->
+        <div class="footer-section footer-brand">
+          <h3>ARUHIERO</h3>
+          <p>CONSTRUCTION & MATERIALS VBA</p>
+          <p>Expertos en construcción y elaboración de hierros.</p>
         </div>
-        <div class="footer-section">
+        <!-- Footer Section 2: Quick Links (Opcional) -->
+        <div class="footer-section footer-links">
+          <h3>Enlaces Rápidos</h3>
+          <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#galeria">Galería</a></li>
+            <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <!-- Footer Section 3: Contact Info -->
+        <div class="footer-section footer-contact">
           <h3>Contacto</h3>
-          <p>📞 (+297) 731-3075</p>
-          <p>📧 aruhierro.1@gmail.com.com</p>
-          <p>📍 Pos chiquito 81 F</p>
+          <p><i class="icon">📍</i> Pos Chiquito 81 F, Savaneta</p>
+          <p><i class="icon">📞</i> <a href="tel:+2977313075">(+297) 731-3075</a></p>
+          <p><i class="icon">📧</i> <a href="mailto:aruhierro.1@gmail.com">aruhierro.1@gmail.com</a></p>
         </div>
-        <div class="footer-section">
+        <!-- Footer Section 4: Opening Hours -->
+        <div class="footer-section footer-hours">
           <h3>Horario</h3>
           <p>Lunes - Viernes: 8:00 AM - 6:00 PM</p>
-          <p>Sábado -  Domingo:  8:00 AM - 4:00 PM</p>
+          <p>Sábado - Domingo: 8:00 AM - 4:00 PM</p>
         </div>
       </div>
+      <!-- Footer Bottom: Copyright -->
+      <div class="footer-bottom">
+        <p>&copy; <span id="currentYear"></span> AruHierro. Todos los derechos reservados.</p>
+        <!-- Opcional: Añadir enlaces a redes sociales aquí -->
+         <div class="social-links">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div> 
+      </div>
     </footer>
+    <!-- ========================= Footer Section End ========================= -->
 
+    <!-- ========================= JavaScript Start ========================= -->
     <script>
-      // Navegación móvil
-      const menuBtn = document.querySelector(".menu-btn");
-      const navMenu = document.querySelector(".nav-menu");
+      document.addEventListener('DOMContentLoaded', () => {
 
-      menuBtn.addEventListener("click", () => {
-        navMenu.classList.toggle("active");
-      });
+        // ------------------------- Mobile Navigation Logic -------------------------
+        const menuBtn = document.querySelector(".menu-btn");
+        const navMenu = document.querySelector(".nav-menu");
+        if (menuBtn && navMenu) {
+            menuBtn.addEventListener("click", () => { navMenu.classList.toggle("active"); });
+            document.querySelectorAll(".nav-menu a").forEach((link) => {
+              link.addEventListener("click", () => { navMenu.classList.remove("active"); });
+            });
+        } else { console.warn("Elementos de navegación móvil no encontrados."); }
 
-      // Cerrar menú al hacer click en un enlace
-      document.querySelectorAll(".nav-menu a").forEach((link) => {
-        link.addEventListener("click", () => {
-          navMenu.classList.remove("active");
-        });
-      });
+        // ------------------------- Scroll Reveal Animation -------------------------
+        const elementsToReveal = document.querySelectorAll(".servicio-card, .historia, .contacto-content, .galeria-seccion .section-title, .carousel-container, .carousel-controls"); // Actualizado selector para contacto
+        function revealElementsOnScroll() {
+            elementsToReveal.forEach((element) => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = "1";
+                    element.style.transform = "translateY(0)";
+                }
+            });
+        }
+        function initializeRevealStyles() {
+            elementsToReveal.forEach((element) => {
+                element.style.opacity = "0";
+                element.style.transform = "translateY(50px)";
+                element.style.transition = "opacity 0.6s ease-out, transform 0.6s ease-out";
+            });
+        }
+        if (elementsToReveal.length > 0) {
+            initializeRevealStyles();
+            window.addEventListener("scroll", revealElementsOnScroll);
+            revealElementsOnScroll();
+        }
 
-      // Formulario de contacto
-      const contactForm = document.getElementById("contactForm");
 
-      contactForm.addEventListener("submit", (e) => {
-        e.preventDefault();
+        // ------------------------- Carousel Logic -------------------------
+        const carousel = document.querySelector('.carousel');
+        const carouselItems = document.querySelectorAll('.carousel-item');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        const carouselContainer = document.querySelector('.carousel-container');
 
-        // Aquí puedes agregar la lógica para enviar el formulario
-        alert("Mensaje enviado correctamente");
-        contactForm.reset();
-      });
+        if (carousel && carouselItems.length > 0 && prevBtn && nextBtn && carouselContainer) {
+            const numItems = carouselItems.length;
+            let currentIndex = 0;
+            let touchStartX = 0;
+            let touchEndX = 0;
+            let autoSlideInterval;
+            const autoSlideDelay = 5000; // 5 segundos por slide
+            let isPausedByHover = false;
 
-      // Animación de scroll para los elementos
-      function revelarElementos() {
-        const elementos = document.querySelectorAll(
-          ".servicio-card, .sobre-nosotros-content, .contacto-form"
-        );
+            function updateCarousel() {
+              const translateValue = -currentIndex * 100 + '%';
+              carousel.style.transform = 'translateX(' + translateValue + ')';
+              carousel.style.transition = 'transform 0.5s ease-in-out';
+            }
 
-        elementos.forEach((elemento) => {
-          const elementoTop = elemento.getBoundingClientRect().top;
-          const windowHeight = window.innerHeight;
+            function nextSlide() {
+              currentIndex = (currentIndex + 1) % numItems;
+              updateCarousel();
+            }
 
-          if (elementoTop < windowHeight - 100) {
-            elemento.style.opacity = "1";
-            elemento.style.transform = "translateY(0)";
-          }
-        });
-      }
+            function prevSlide() {
+              currentIndex = (currentIndex - 1 + numItems) % numItems;
+              updateCarousel();
+            }
 
-      // Inicialmente los elementos están ocultos
-      document
-        .querySelectorAll(
-          ".servicio-card, .sobre-nosotros-content, .contacto-form"
-        )
-        .forEach((elemento) => {
-          elemento.style.opacity = "0";
-          elemento.style.transform = "translateY(50px)";
-          elemento.style.transition = "all 0.6s ease-out";
-        });
+            function startAutoSlide() {
+              if (isPausedByHover) return;
+              clearInterval(autoSlideInterval);
+              autoSlideInterval = setInterval(nextSlide, autoSlideDelay);
+            }
 
-      // Evento de scroll para revelar elementos
-      window.addEventListener("scroll", revelarElementos);
-      // Llamar una vez al cargar la página
-      revelarElementos();
+            function stopAutoSlide() {
+              clearInterval(autoSlideInterval);
+            }
+
+            function handleSwipe() {
+              const diffX = touchStartX - touchEndX;
+              const sensitivity = 50;
+              if (diffX > sensitivity) {
+                nextSlide();
+              } else if (diffX < -sensitivity) {
+                prevSlide();
+              }
+              startAutoSlide(); // Reinicia después del swipe (si no está pausado por hover)
+            }
+
+            // --- Event Listeners ---
+            nextBtn.addEventListener('click', () => {
+              stopAutoSlide();
+              nextSlide();
+              startAutoSlide();
+            });
+
+            prevBtn.addEventListener('click', () => {
+              stopAutoSlide();
+              prevSlide();
+              startAutoSlide();
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    stopAutoSlide();
+                    prevSlide();
+                    startAutoSlide();
+                } else if (e.key === 'ArrowRight') {
+                    stopAutoSlide();
+                    nextSlide();
+                    startAutoSlide();
+                }
+            });
+
+            carouselItems.forEach(item => {
+              const mediaElement = item.querySelector('img, video');
+              const description = item.querySelector('.image-description');
+              if (mediaElement && description) {
+                  item.addEventListener('touchstart', (e) => {
+                    item.classList.add('show-description');
+                  }, { passive: true });
+                  item.addEventListener('touchend', () => {
+                    item.classList.remove('show-description');
+                  });
+                  item.addEventListener('touchcancel', () => {
+                    item.classList.remove('show-description');
+                  });
+              }
+            });
+
+            carousel.addEventListener('touchstart', (e) => {
+              touchStartX = e.changedTouches[0].clientX;
+              stopAutoSlide(); // Pausa al iniciar toque para swipe
+            }, { passive: true });
+
+            carousel.addEventListener('touchend', (e) => {
+              touchEndX = e.changedTouches[0].clientX;
+              handleSwipe(); // Procesa swipe y reinicia timer dentro
+            });
+
+            carouselContainer.addEventListener('mouseenter', () => {
+                isPausedByHover = true;
+                stopAutoSlide();
+            });
+            carouselContainer.addEventListener('mouseleave', () => {
+                isPausedByHover = false;
+                startAutoSlide();
+            });
+
+            // --- Inicialización ---
+            updateCarousel();
+            startAutoSlide();
+
+        } else {
+            console.warn("Uno o más elementos del carrusel no fueron encontrados.");
+        }
+
+        // ------------------------- Footer Current Year -------------------------
+        const currentYearSpan = document.getElementById('currentYear');
+        if (currentYearSpan) {
+            currentYearSpan.textContent = new Date().getFullYear();
+        }
+
+      }); // Fin del DOMContentLoaded listener
     </script>
+    <!-- ========================= JavaScript End ========================= -->
+
   </body>
 </html>
